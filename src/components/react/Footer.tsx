@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import * as Lucide from "lucide-react";
 
 export default function Footer() {
@@ -21,16 +20,10 @@ export default function Footer() {
     <footer className="bg-primary text-white py-10 md:py-16 px-4 md:px-8">
       <div className="max-w-[1216px] mx-auto">
         {/* Top Section - Stack en mobile */}
-        <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-8 md:pb-8 border-b border-slate-500/50">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-8 pb-8 border-b border-slate-500/50">
           {/* Brand */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col gap-4 md:gap-6"
-          >
-            <h3 className="font-black text-xl md:text-2xl leading-7 md:leading-8 tracking-[-1px] md:tracking-[-1.2px] uppercase">
+          <div className="flex flex-col gap-4 md:gap-6 animate-fade-in-up">
+            <h3 className="font-bold text-xl md:text-2xl leading-7 md:leading-8 tracking-[-1px] md:tracking-[-1.2px] uppercase">
               Aceros Saracco
             </h3>
             <p className="text-gray-400 text-xs md:text-sm leading-relaxed md:leading-[23px] max-w-[320px]">
@@ -61,17 +54,14 @@ export default function Footer() {
                 <Lucide.Linkedin className="w-5 md:w-6 h-5 md:h-6 text-white group-hover:text-accent transition-colors" />
               </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Links - Stack vertical en mobile */}
-          <div className="flex flex-col sm:flex-row gap-6 md:gap-16">
+          <div className="flex flex-row gap-16">
             {/* Quick Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="flex flex-col gap-3 md:gap-4"
+            <div
+              className="flex flex-col gap-3 md:gap-4 animate-fade-in-up"
+              style={{ animationDelay: "0.1s" }}
             >
               <h4 className="text-accent font-bold text-xs md:text-sm uppercase tracking-[1.4px]">
                 Enlaces
@@ -85,15 +75,12 @@ export default function Footer() {
                   {link.label}
                 </a>
               ))}
-            </motion.div>
+            </div>
 
             {/* Contact Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-col gap-3 md:gap-4"
+            <div
+              className="flex flex-col gap-3 md:gap-4 animate-fade-in-up"
+              style={{ animationDelay: "0.2s" }}
             >
               <h4 className="text-accent font-bold text-xs md:text-sm uppercase tracking-[1.4px]">
                 Contacto
@@ -107,22 +94,19 @@ export default function Footer() {
                   {link.label}
                 </a>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
 
         {/* Bottom */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="pt-6 md:pt-8 text-center"
+        <div
+          className="pt-6 md:pt-8 text-center animate-fade-in"
+          style={{ animationDelay: "0.3s" }}
         >
           <p className="text-gray-500 text-xs leading-4">
             © {currentYear} Aceros Saracco. Todos los derechos reservados.
           </p>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

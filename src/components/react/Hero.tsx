@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import * as Lucide from "lucide-react";
 
 const products = [
@@ -10,11 +9,11 @@ const products = [
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-[600px] md:h-[725px] flex items-center justify-center">
+    <section className="relative w-full h-[600px] md:h-[725px] flex items-center justify-center border-t border-gray-200">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/hero_home.webp"
+          src="/images/hero-bg.webp"
           alt="Industrial warehouse"
           className="w-full h-full object-cover object-top"
         />
@@ -24,38 +23,28 @@ export default function Hero() {
       {/* Content - Centrado */}
       <div className="relative z-10 max-w-[768px] w-full px-4 md:px-8 flex flex-col items-center gap-4 md:gap-6">
         {/* Logo Header */}
-        <motion.img
+        <img
           src="/images/logo-header.webp"
           alt="Aceros Saracco"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="w-40 md:w-56 h-auto object-contain mb-2"
+          className="w-44 md:w-60 h-auto object-contain my-10 animate-fade-in-down"
         />
 
         {/* Heading */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-white font-bold text-2xl md:text-4xl lg:text-[60px] leading-tight md:leading-[60px] uppercase text-center"
+        <h1
+          className="text-white font-bold text-2xl md:text-4xl lg:text-[60px] leading-tight md:leading-[60px] uppercase text-center animate-fade-in-up"
+          style={{ animationDelay: "0.1s" }}
         >
           Calidad, precisión y compromiso en cada entrega.
-        </motion.h1>
+        </h1>
 
         {/* Product Icons - Grid responsive */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-6 md:gap-16 mt-2 md:mt-4"
+        <div
+          className="flex flex-wrap justify-center gap-6 md:gap-16 mt-2 md:mt-4 mb-8 animate-fade-in-up"
+          style={{ animationDelay: "0.2s" }}
         >
-          {products.map((product, index) => (
-            <motion.div
+          {products.map((product) => (
+            <div
               key={product.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
               className="flex flex-col items-center gap-2"
             >
               <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
@@ -67,30 +56,22 @@ export default function Hero() {
               <span className="text-white font-bold text-xs md:text-sm uppercase tracking-[1.4px]">
                 {product.name}
               </span>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* CTAs - Stack en mobile */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="flex flex-col md:flex-row gap-3 md:gap-4 mt-2 md:mt-4 w-full md:w-auto"
+        <div
+          className="flex flex-col md:flex-row mt-2 md:mt-4 w-full md:w-auto animate-fade-in-up"
+          style={{ animationDelay: "0.3s" }}
         >
           <a
             href="#contacto"
-            className="bg-accent text-white font-bold text-sm px-6 md:px-8 py-3 uppercase tracking-wider hover:bg-orange-600 transition-colors text-center"
+            className="bg-accent text-white font-bold text-sm px-6 md:px-8 py-3 uppercase tracking-wider hover:bg-accent/90 transition-colors text-center"
           >
             Solicitar Presupuesto
           </a>
-          <a
-            href="#nosotros"
-            className="border-2 border-white text-white font-bold text-sm px-6 md:px-8 py-3 uppercase tracking-wider hover:bg-white hover:text-primary transition-colors text-center"
-          >
-            Conocenos
-          </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

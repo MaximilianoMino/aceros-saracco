@@ -19,7 +19,7 @@ export default function FloatingWhatsapp() {
       <img
         src="/images/icons/whatsapp.svg"
         alt="WhatsApp"
-        className="w-12 h-12 object-contain"
+        className="w-12 h-12 object-contain rounded-full"
       />
       {/* Pulse animation ring */}
       <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-75"></span>
