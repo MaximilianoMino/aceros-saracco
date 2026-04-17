@@ -1,28 +1,22 @@
-import { motion } from "framer-motion";
 import * as Lucide from "lucide-react";
 
 export default function FloatingWhatsapp() {
-  const phoneNumber = "5493511234567"; // Replace with actual number
+  const phoneNumber = "5493517868219";
 
   return (
-    <motion.a
+    <a
       href={`https://wa.me/${phoneNumber}`}
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ type: "spring", stiffness: 260, damping: 20, delay: 1 }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      className="fixed bottom-6 right-6 z-50 text-white rounded-full shadow-2xl"
+      className="fixed bottom-6 right-6 z-50 group"
+      aria-label="Contactar por WhatsApp"
     >
       <img
         src="/images/icons/whatsapp.svg"
         alt="WhatsApp"
-        className="w-12 h-12 object-contain rounded-full"
+        className="w-14 h-14 object-contain rounded-full shadow-2xl transition-transform duration-300 group-hover:scale-110 group-active:scale-95"
       />
-      {/* Pulse animation ring */}
-      <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-75"></span>
-    </motion.a>
+      <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30"></span>
+    </a>
   );
 }

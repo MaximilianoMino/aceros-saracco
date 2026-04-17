@@ -10,100 +10,109 @@ export default function Footer() {
     { label: "Materiales", href: "#materiales" },
   ];
 
-  const contactLinks = [
-    { label: "Contacto", href: "#contacto" },
-    { label: "Cotizaciones", href: "#contacto" },
-    { label: "Trabaja con nosotros", href: "#" },
-  ];
-
   return (
-    <footer className="bg-primary text-white py-10 md:py-16 px-4 md:px-8">
+    <footer className="bg-dark text-white py-10 md:py-16 px-4 md:px-8">
       <div className="max-w-[1216px] mx-auto">
-        {/* Top Section - Stack en mobile */}
-        <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-8 pb-8 border-b border-slate-500/50">
-          {/* Brand */}
-          <div className="flex flex-col gap-4 md:gap-6 animate-fade-in-up">
-            <h3 className="font-bold text-xl md:text-2xl leading-7 md:leading-8 tracking-[-1px] md:tracking-[-1.2px] uppercase">
+        {/* Top Section */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 pb-8 border-b border-white/10">
+          {/* Brand Column */}
+          <div className="md:col-span-2 flex flex-col gap-4 animate-fade-in-up">
+            <h3 className="font-bold text-xl md:text-2xl leading-7 md:leading-8 tracking-[-1px] uppercase text-white">
               Aceros Saracco
             </h3>
-            <p className="text-gray-400 text-xs md:text-sm leading-relaxed md:leading-[23px] max-w-[320px]">
-              Fabricantes y proveedores de acero de calidad para la industria de
-              la construcción. Compromiso, precisión y entrega en cada proyecto.
+            <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-[320px]">
+              Fabricantes y proveedores de acero de calidad para la industria de la construcción. Compromiso, precisión y entrega en cada proyecto.
             </p>
-            {/* Social Icons - Blancos sin bg */}
-            <div className="flex gap-4">
+            {/* Social Icons */}
+            <div className="flex gap-4 mt-2">
               <a
-                href="#"
-                className="w-8 md:w-10 h-8 md:h-10 flex items-center justify-center hover:text-accent transition-colors group"
+                href="https://www.facebook.com/Aceros-Saracco-61565624704902"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 flex items-center justify-center hover:bg-accent/20 rounded-lg transition-colors group"
                 aria-label="Facebook"
               >
-                <Lucide.Facebook className="w-5 md:w-6 h-5 md:h-6 text-white group-hover:text-accent transition-colors" />
+                <Lucide.Facebook className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
               </a>
               <a
-                href="#"
-                className="w-8 md:w-10 h-8 md:h-10 flex items-center justify-center hover:text-accent transition-colors group"
+                href="https://instagram.com/acerossaracco"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 flex items-center justify-center hover:bg-accent/20 rounded-lg transition-colors group"
                 aria-label="Instagram"
               >
-                <Lucide.Instagram className="w-5 md:w-6 h-5 md:h-6 text-white group-hover:text-accent transition-colors" />
-              </a>
-              <a
-                href="#"
-                className="w-8 md:w-10 h-8 md:h-10 flex items-center justify-center hover:text-accent transition-colors group"
-                aria-label="LinkedIn"
-              >
-                <Lucide.Linkedin className="w-5 md:w-6 h-5 md:h-6 text-white group-hover:text-accent transition-colors" />
+                <Lucide.Instagram className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
               </a>
             </div>
           </div>
 
-          {/* Links - Stack vertical en mobile */}
-          <div className="flex flex-row gap-16">
-            {/* Quick Links */}
-            <div
-              className="flex flex-col gap-3 md:gap-4 animate-fade-in-up"
-              style={{ animationDelay: "0.1s" }}
-            >
-              <h4 className="text-accent font-bold text-xs md:text-sm uppercase tracking-[1.4px]">
-                Enlaces
-              </h4>
-              {quickLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="text-gray-400 text-xs md:text-sm hover:text-white hover:translate-x-1 transition-all"
-                >
-                  {link.label}
-                </a>
-              ))}
+          {/* Quick Links */}
+          <div className="flex flex-col gap-3 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+            <h4 className="text-accent font-bold text-xs uppercase tracking-[1.4px]">
+              Enlaces
+            </h4>
+            {quickLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-gray-400 text-sm hover:text-white hover:translate-x-1 transition-all w-fit"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          {/* Contact Info */}
+          <div className="flex flex-col gap-4 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+            <h4 className="text-accent font-bold text-xs uppercase tracking-[1.4px]">
+              Contacto
+            </h4>
+            
+            {/* Address */}
+            <div className="flex items-start gap-3">
+              <Lucide.MapPin className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
+              <p className="text-gray-400 text-sm">
+                Dr. Ricaldo Balbin, RN19 km 3,3, X5000 Córdoba
+              </p>
             </div>
 
-            {/* Contact Links */}
-            <div
-              className="flex flex-col gap-3 md:gap-4 animate-fade-in-up"
-              style={{ animationDelay: "0.2s" }}
-            >
-              <h4 className="text-accent font-bold text-xs md:text-sm uppercase tracking-[1.4px]">
-                Contacto
-              </h4>
-              {contactLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="text-gray-400 text-xs md:text-sm hover:text-white hover:translate-x-1 transition-all"
-                >
-                  {link.label}
-                </a>
-              ))}
+            {/* Phone */}
+            <div className="flex items-start gap-3">
+              <Lucide.Phone className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
+              <a
+                href="https://wa.me/5493517868219"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 text-sm hover:text-white transition-colors"
+              >
+                +54 9 3517 86-8219
+              </a>
             </div>
+
+            {/* Email */}
+            <div className="flex items-start gap-3">
+              <Lucide.Mail className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
+              <a
+                href="mailto:acerossaracco.sas@gmail.com"
+                className="text-gray-400 text-sm hover:text-white transition-colors"
+              >
+                acerossaracco.sas@gmail.com
+              </a>
+            </div>
+
+            {/* CTA */}
+            <a
+              href="#contacto"
+              className="mt-2 bg-accent text-white font-bold text-xs uppercase tracking-wider px-4 py-2 rounded hover:bg-accent/90 transition-colors w-fit"
+            >
+              Contactar
+            </a>
           </div>
         </div>
 
         {/* Bottom */}
-        <div
-          className="pt-6 md:pt-8 text-center animate-fade-in"
-          style={{ animationDelay: "0.3s" }}
-        >
-          <p className="text-gray-500 text-xs leading-4">
+        <div className="pt-6 text-center animate-fade-in" style={{ animationDelay: "0.3s" }}>
+          <p className="text-gray-500 text-xs">
             © {currentYear} Aceros Saracco. Todos los derechos reservados.
           </p>
         </div>

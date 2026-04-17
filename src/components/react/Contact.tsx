@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import * as Lucide from "lucide-react";
 
 interface FormData {
@@ -24,19 +25,21 @@ export default function Contact() {
     setStatus("loading");
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setStatus("success");
-        setFormData({ nombre: "", email: "", telefono: "", mensaje: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch {
+      await emailjs.send(
+        import.meta.env.PUBLIC_EMAILJS_SERVICE_ID,
+        import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID,
+        {
+          nombre: formData.nombre,
+          email: formData.email,
+          telefono: formData.telefono,
+          mensaje: formData.mensaje,
+        },
+        import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY,
+      );
+      setStatus("success");
+      setFormData({ nombre: "", email: "", telefono: "", mensaje: "" });
+    } catch (error) {
+      console.error("EmailJS Error:", error);
       setStatus("error");
     }
   };
@@ -48,16 +51,19 @@ export default function Contact() {
   };
 
   return (
-    <section id="contacto" className="py-12 md:py-24 px-4 md:px-8 bg-white border-t border-gray-200">
+    <section
+      id="contacto"
+      className="py-12 md:py-24 px-4 md:px-8 bg-primary border-t border-gray-200"
+    >
       <div className="max-w-[1216px] mx-auto flex flex-col lg:flex-row gap-8 lg:gap-16">
         {/* Left - Contact Info */}
         <div className="flex-1 flex flex-col gap-6 md:gap-8">
           <div className="animate-slide-in-left">
-            <h2 className="text-primary font-bold text-xl md:text-[36px] leading-tight md:leading-10 tracking-[-0.5px] md:tracking-[-0.9px] uppercase">
+            <h2 className="text-white font-bold text-xl md:text-[36px] leading-tight md:leading-10 tracking-[-0.5px] md:tracking-[-0.9px] uppercase">
               <span className="text-accent text-4xl leading-none mr-2">|</span>
               CONTACTANOS
             </h2>
-            <p className="text-gray-700 text-sm md:text-lg leading-relaxed md:leading-7 mt-2 md:mt-4">
+            <p className="text-gray-400 text-sm md:text-lg leading-relaxed md:leading-7 mt-2 md:mt-4">
               Nuestro equipo técnico está listo para asesorarte. Respondemos
               consultas técnicas y presupuestos en el día.
             </p>
@@ -74,10 +80,10 @@ export default function Contact() {
                 <Lucide.MapPin className="w-4 md:w-5 h-4 md:h-5 text-accent group-hover:text-white transition-colors" />
               </div>
               <div>
-                <h4 className="text-primary font-bold text-xs md:text-base uppercase">
+                <h4 className="text-white font-bold text-xs md:text-base uppercase">
                   Ubicación
                 </h4>
-                <p className="text-gray-700 text-xs md:text-base">
+                <p className="text-gray-400 text-xs md:text-base">
                   Dr. Ricaldo Balbin, RN19 km 3,3,
                   <br />
                   X5000 Córdoba
@@ -91,12 +97,12 @@ export default function Contact() {
                 <Lucide.Phone className="w-4 md:w-5 h-4 md:h-5 text-accent group-hover:text-white transition-colors" />
               </div>
               <div>
-                <h4 className="text-primary font-bold text-xs md:text-base uppercase">
+                <h4 className="text-white font-bold text-xs md:text-base uppercase">
                   Atención Comercial
                 </h4>
                 <a
                   href="https://wa.me/5493517868219"
-                  className="text-gray-700 text-xs md:text-base hover:text-accent transition-colors"
+                  className="text-gray-400 text-xs md:text-base hover:text-accent transition-colors"
                 >
                   +54 9 3517 86-8219
                 </a>
@@ -109,12 +115,12 @@ export default function Contact() {
                 <Lucide.Mail className="w-4 md:w-5 h-4 md:h-5 text-accent group-hover:text-white transition-colors" />
               </div>
               <div>
-                <h4 className="text-primary font-bold text-xs md:text-base uppercase">
+                <h4 className="text-white font-bold text-xs md:text-base uppercase">
                   Correo Electrónico
                 </h4>
                 <a
                   href="mailto:acerossaracco.sas@gmail.com"
-                  className="text-gray-700 text-xs md:text-base hover:text-accent transition-colors"
+                  className="text-gray-400 text-xs md:text-base hover:text-accent transition-colors"
                 >
                   acerossaracco.sas@gmail.com
                 </a>
@@ -127,14 +133,14 @@ export default function Contact() {
                 <Lucide.Instagram className="w-4 md:w-5 h-4 md:h-5 text-accent group-hover:text-white transition-colors" />
               </div>
               <div>
-                <h4 className="text-primary font-bold text-xs md:text-base uppercase">
+                <h4 className="text-white font-bold text-xs md:text-base uppercase">
                   Redes Sociales
                 </h4>
                 <a
                   href="https://instagram.com/Aceros__Saracco"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-700 text-xs md:text-base hover:text-accent transition-colors"
+                  className="text-gray-400 text-xs md:text-base hover:text-accent transition-colors"
                 >
                   @Aceros__Saracco
                 </a>
@@ -165,7 +171,7 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Ej: Juan Pérez"
                 required
-                className="bg-light border border-gray-200 rounded-lg px-3 md:px-4 py-2 md:py-3 text-sm md:text-base focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
+                className="bg-light border border-gray-200 rounded-lg px-3 md:px-4 py-2 md:py-3 text-sm md:text-base placeholder:text-gray-600 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
               />
             </div>
 
@@ -186,7 +192,7 @@ export default function Contact() {
                   onChange={handleChange}
                   placeholder="juan@empresa.com"
                   required
-                  className="bg-light border border-gray-200 rounded-lg px-3 md:px-4 py-2 md:py-3 text-sm md:text-base focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
+                  className="bg-light border border-gray-200 rounded-lg px-3 md:px-4 py-2 md:py-3 text-sm md:text-base placeholder:text-gray-600 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
                 />
               </div>
               <div className="flex-1 flex flex-col gap-2">
@@ -203,7 +209,7 @@ export default function Contact() {
                   value={formData.telefono}
                   onChange={handleChange}
                   placeholder="+54 351..."
-                  className="bg-light border border-gray-200 rounded-lg px-3 md:px-4 py-2 md:py-3 text-sm md:text-base focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
+                  className="bg-light border border-gray-200 rounded-lg px-3 md:px-4 py-2 md:py-3 text-sm md:text-base placeholder:text-gray-600 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
                 />
               </div>
             </div>
@@ -224,7 +230,7 @@ export default function Contact() {
                 placeholder="Describa su requerimiento o materiales a cotizar..."
                 rows={3}
                 required
-                className="bg-light border border-gray-200 rounded-lg px-3 md:px-4 py-2 md:py-3 text-sm md:text-base focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all resize-none"
+                className="bg-light border border-gray-200 rounded-lg px-3 md:px-4 py-2 md:py-3 text-sm md:text-base placeholder:text-gray-600 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all resize-none"
               />
             </div>
 
@@ -232,7 +238,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={status === "loading"}
-              className="bg-accent text-white font-bold text-xs md:text-base uppercase tracking-wider py-3 md:py-3 rounded-lg hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="bg-accent text-white font-bold text-xs md:text-base uppercase tracking-wider py-3 md:py-3 rounded-lg hover:bg-accent/90  transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {status === "loading" ? (
                 <>

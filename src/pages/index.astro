@@ -1,26 +1,24 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/react/Header';
-import Hero from '../components/react/Hero';
-import About from '../components/react/About';
-import Location from '../components/react/Location';
-import Services from '../components/react/Services';
-import Materials from '../components/react/Materials';
-import FAQ from '../components/react/FAQ';
-import Contact from '../components/react/Contact';
-import Footer from '../components/react/Footer';
-import FloatingWhatsapp from '../components/react/FloatingWhatsapp';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/react/Header";
+import Hero from "../components/react/Hero";
+import About from "../components/react/About";
+import Location from "../components/react/Location";
+import Services from "../components/react/Services";
+import Materials from "../components/react/Materials";
+import Contact from "../components/react/Contact";
+import Footer from "../components/react/Footer";
+import FloatingWhatsapp from "../components/react/FloatingWhatsapp";
 ---
 
 <Layout title="Aceros Saracco - Acero de Calidad para Construcción">
   <Header client:load />
   <main>
     <Hero client:load />
-    <About client:load />
+    <Materials client:load />
     <Location client:load />
     <Services client:load />
-    <Materials client:load />
-    <FAQ client:load />
+    <About client:load />
     <Contact client:load />
   </main>
   <Footer client:load />
